@@ -37,6 +37,18 @@
             overflow-x: hidden;
         }
 
+        /* حركات الظهور الاحترافية المضافة حديثاً */
+        @keyframes customFadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
         /* شاشات الترحيب والبدء */
         .screen-overlay {
             position: fixed;
@@ -61,6 +73,8 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            /* تطبيق حركة الدخول هنا */
+            animation: customFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .welcome-title {
@@ -211,7 +225,6 @@
             box-shadow: 0 5px 15px rgba(46, 204, 113, 0.08);
         }
 
-        /* تأثير الحركة المطور لقسم القيادة وقسم الانجازات */
         .leader-item, .achievement-item {
             display: flex;
             align-items: center;
@@ -246,7 +259,6 @@
             gap: 6px;
         }
 
-        /* روابط ولوائح القوات الخاصة */
         .link-button {
             display: flex;
             align-items: center;
@@ -268,7 +280,6 @@
             border-color: var(--accent-green);
         }
 
-        /* القوانين المرقمة */
         .list-numbered {
             list-style-type: none;
             counter-reset: my-counter;
@@ -301,7 +312,6 @@
             border: 1px solid var(--accent-green);
         }
 
-        /* الأنظمة الفرعية للرصد والتحضير */
         .system-sub-title {
             color: var(--accent-green);
             font-size: 1.15rem;
@@ -317,7 +327,6 @@
             line-height: 1.6;
         }
 
-        /* تنسيقات إضافية لقسم الإنجازات المحرك */
         .achievement-block {
             display: flex;
             flex-direction: column;
@@ -334,7 +343,6 @@
 </head>
 <body>
 
-    <!-- الشاشة الأولى: الترحيب المطور المحدث بالكامل -->
     <div id="welcome-screen" class="screen-overlay">
         <div class="welcome-content">
             <h1 class="welcome-title">القوات الخاصة لأمن الطرق | KR</h1>
@@ -354,9 +362,8 @@
         </div>
     </div>
 
-    <!-- الشاشة الثانية: الترحيب والتعريف الرسمي بالقطاع مع تحديث زر الدخول المطلوب -->
     <div id="intro-screen" class="screen-overlay" style="display: none; opacity: 0;">
-        <div class="welcome-content">
+        <div class="welcome-content" id="intro-content">
             <h1 class="welcome-title" style="color: var(--accent-green);">ترحيب رسمي</h1>
             <p class="welcome-desc" style="color: #ffffff; font-weight: bold; font-size: 1.25rem; text-align: center; margin-bottom: 20px;">
                 أهلاً وسهلاً بكم في منصة القوات الخاصة لأمن الطرق.
@@ -368,12 +375,10 @@
                 <br><br>
                 كما تعمل القوات الخاصة لأمن الطرق على تعزيز الأمن والاستقرار، وحماية مستخدمي الطرق، والتصدي لكافة الأنشطة غير النظامية، ضمن منظومة أمنية متكاملة تعتمد على الكفاءة، والانضباط، وسرعة الاستجابة.
             </p>
-            <!-- تعديل الزر بدقة هنا -->
             <button class="btn-general" onclick="enterMainSite()">الدخول الى منصة وتصفح الأنظمة ولوائح</button>
         </div>
     </div>
 
-    <!-- لوحة التوقيت الحي المحدثة بالاسم الجديد المستقر علوياً -->
     <div class="live-ticker-panel" id="ticker-top" style="display: none;">
         <div class="ticker-brand">
             <span>المنصة الرقمية للقوات الخاصة لأمن الطرق | KR</span>
@@ -385,10 +390,8 @@
         </div>
     </div>
 
-    <!-- محتوى الموقع الأساسي المرتب هيدروليكياً -->
     <div class="main-content" id="main-site">
         
-        <!-- القسم الأول: القوانين العامة للقطاع -->
         <section id="general-rules">
             <h2 class="section-title">قوانين القوات الخاصة لأمن الطرق</h2>
             <div class="card">
@@ -413,12 +416,10 @@
             </div>
         </section>
 
-        <!-- القسم الثاني: الأنظمة التخصصية (رصد المخالفات والتحضير) -->
         <section id="specialized-systems">
             <h2 class="section-title">أنظمة العمل والتشغيل الميداني</h2>
             <div class="grid-container">
                 
-                <!-- نظام رصد المخالفات -->
                 <div class="card">
                     <h3 style="margin-bottom:20px; color:#e2e8f0; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">نظام رصد المخالفات الميدانية</h3>
                     
@@ -448,7 +449,6 @@
                     </div>
                 </div>
 
-                <!-- نظام التحضير الميداني -->
                 <div class="card">
                     <h3 style="margin-bottom:20px; color:#e2e8f0; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">نظام التحضير والمباشرات</h3>
                     
@@ -486,12 +486,10 @@
             </div>
         </section>
 
-        <!-- القسم الثالث: أسماء القيادات واللوائح والروابط الرسمية للقطاع -->
         <section id="leadership-and-links">
             <h2 class="section-title">القيادة واللوائح الرسمية</h2>
             <div class="grid-container">
                 
-                <!-- أسماء القيادات -->
                 <div class="card" style="grid-column: span 2;">
                     <h3 style="margin-bottom:20px; color:var(--accent-green);">أسماء قيادة قطاع القوات الخاصة لأمن الطرق</h3>
                     
@@ -517,7 +515,6 @@
                     </div>
                 </div>
 
-                <!-- اللوائح والمستندات الرسمية -->
                 <div class="card">
                     <h3 style="margin-bottom:20px; color:var(--accent-green);">المستندات واللوائح</h3>
                     <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">الروابط والمستندات المعتمدة لأفراد القطاع لمراجعة وضبط آلية العمل الميداني والأنظمة القانونية:</p>
@@ -530,7 +527,6 @@
             </div>
         </section>
 
-        <!-- القسم الرابع: نظام المراجع الرسمية -->
         <section id="references">
             <h2 class="section-title">تسلسل المراجع الرسمية بالقطاع</h2>
             <div class="grid-container">
@@ -557,7 +553,6 @@
             </div>
         </section>
 
-        <!-- القسم الخامس: إنجازات القطاع -->
         <section id="achievements">
             <h2 class="section-title">إنجازات القوات الخاصة لأمن الطرق</h2>
             <div class="grid-container">
@@ -594,6 +589,7 @@
         function showPlatformIntro() {
             const screen1 = document.getElementById('welcome-screen');
             const screen2 = document.getElementById('intro-screen');
+            const introContent = document.getElementById('intro-content');
             
             screen1.style.opacity = '0';
             screen1.style.pointerEvents = 'none';
@@ -601,6 +597,12 @@
             setTimeout(() => {
                 screen1.style.display = 'none';
                 screen2.style.display = 'flex';
+                
+                // إعادة تشغيل الإنيميشن للشاشة الثانية عند ظهورها
+                introContent.style.animation = 'none';
+                introContent.offsetHeight; 
+                introContent.style.animation = 'customFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards';
+                
                 setTimeout(() => {
                     screen2.style.opacity = '1';
                 }, 50);
