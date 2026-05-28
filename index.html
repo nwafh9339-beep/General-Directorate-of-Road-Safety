@@ -224,7 +224,45 @@
             border-color: var(--light-green);
             box-shadow: 0 5px 15px rgba(46, 204, 113, 0.08);
         }
+/* تنسيق البنر السفلي لأمن الطرق */
+        .bottom-hero-banner {
+            background-image: linear-gradient(to top, rgba(0, 0, 0, 0.95) 20%, rgba(0, 0, 0, 0.4) 100%), url('https://raw.githubusercontent.com/nawaf8203/assets/main/road_security.jpg'); 
+            background-size: cover;
+            background-position: center 35%;
+            background-repeat: no-repeat;
+            height: 380px; 
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: flex-end; 
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+            margin-top: 40px;
+            animation: sectionFadeIn 1.2s ease-out;
+        }
 
+        .banner-content {
+            padding: 40px;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .banner-title {
+            font-size: 2rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .banner-subtitle {
+            font-size: 1.1rem;
+            color: var(--light-green);
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        }
         .leader-item, .achievement-item {
             display: flex;
             align-items: center;
