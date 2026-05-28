@@ -76,7 +76,7 @@
             font-size: 1.15rem;
             line-height: 1.8;
             margin-bottom: 30px;
-            text-align: justify;
+            text-align: center;
         }
 
         .disclaimer-box {
@@ -331,11 +331,16 @@
 </head>
 <body>
 
+    <!-- الشاشة الأولى: الترحيب المطور المحدث بالكامل -->
     <div id="welcome-screen" class="screen-overlay">
         <div class="welcome-content">
             <h1 class="welcome-title">القوات الخاصة لأمن الطرق | KR</h1>
-            <p class="welcome-desc" style="text-align: center;">
-                مرحباً بكم في البوابة الإلكترونية لقطاع القوات الخاصة لأمن الطرق بمدينة كي ار. اضغط على الزر أدناه لبدء الولوج للمنصة.
+            <p class="welcome-desc">
+                أهلاً وسهلاً بكم في المنصة الإلكترونية للقوات الخاصة لأمن الطرق بمدينة KR
+                <br>
+                نسعد بخدمتكم عبر هذه البوابة الرسمية المخصصة للوصول إلى الأنظمة والخدمات الأمنية الخاصة بالقطاع
+                <br>
+                للبدء والدخول إلى المنصة، يرجى الضغط على الزر الموضح أدناه.
             </p>
             
             <div class="disclaimer-box">
@@ -346,26 +351,29 @@
         </div>
     </div>
 
+    <!-- الشاشة الثانية: الترحيب والتعريف الرسمي بالقطاع مع تحديث زر الدخول المطلوب -->
     <div id="intro-screen" class="screen-overlay" style="display: none; opacity: 0;">
         <div class="welcome-content">
             <h1 class="welcome-title" style="color: var(--accent-green);">ترحيب رسمي</h1>
             <p class="welcome-desc" style="color: #ffffff; font-weight: bold; font-size: 1.25rem; text-align: center; margin-bottom: 20px;">
                 أهلاً وسهلاً بكم في منصة القوات الخاصة لأمن الطرق.
             </p>
-            <p class="welcome-desc">
+            <p class="welcome-desc" style="text-align: justify;">
                 القوات الخاصة لأمن الطرق هي إحدى القطاعات الأمنية التابعة لوزارة الداخلية داخل مدينة KR، وتُعنى بحفظ أمن وسلامة الطرق السريعة وتأمين الحركة المرورية وفق أعلى معايير الانضباط والجاهزية الأمنية.
                 <br><br>
                 وتتولى القوات مهام التفتيش الأمني، واستلام ومباشرة الطرق الرئيسية والحيوية مثل طريق الملك فهد، إضافةً إلى تنفيذ عمليات البحث والتفتيش، وضبط المخالفين والمهربين، والتعامل مع الحالات الأمنية والبلاغات الطارئة بكل احترافية وحزم.
                 <br><br>
-                كما تعمل القوات الخاصة لأمن الطرق على تعزيز الأمن والاستقرار، وحماية مستخدمي الطرق، والتصدي لكافة الأنشطة غير النظامية، ضمن منظومة أمنية متكاملة تعتمد على الكفاءة، والانضباط، وسرعة الاستجابة.
+                كما تعمل القوات الخاصة لأمن الطرق على تعزيز الأمن والاستقرار, وحماية مستخدمي الطرق، والتصدي لكافة الأنشطة غير النظامية، ضمن منظومة أمنية متكاملة تعتمد على الكفاءة، والانضباط، وسرعة الاستجابة.
             </p>
-            <button class="btn-general" onclick="enterMainSite()">الدخول إلى المنصة وتصفح الأقسام</button>
+            <!-- تعديل الزر بدقة هنا -->
+            <button class="btn-general" onclick="enterMainSite()">الدخول الى منصة وتصفح الأنظمة ولوائح</button>
         </div>
     </div>
 
+    <!-- لوحة التوقيت الحي المحدثة بالاسم الجديد المستقر علوياً -->
     <div class="live-ticker-panel" id="ticker-top" style="display: none;">
         <div class="ticker-brand">
-            <span>المنصة الرقمية لأمن الطرق | KR</span>
+            <span>المنصة الرقمية القوات الخاصة لأمن الطرق | KR</span>
         </div>
         <div class="time-date-container">
             <div class="live-clock"><span id="clock-display">00:00:00 م</span></div>
@@ -374,8 +382,10 @@
         </div>
     </div>
 
+    <!-- محتوى الموقع الأساسي المرتب هيدروليكياً -->
     <div class="main-content" id="main-site">
         
+        <!-- القسم الأول: القوانين العامة للقطاع -->
         <section id="general-rules">
             <h2 class="section-title">قوانين القوات الخاصة لأمن الطرق</h2>
             <div class="card">
@@ -388,7 +398,7 @@
                     <li>الكذب أو التزوير في النماذج والمباشرات يُعد تجاوزًا خطيرًا، وتُطبق على مرتكبه العقوبات القصوى.</li>
                     <li>الأوامر الصادرة من قيادة القطاع أو القيادة واجبة التنفيذ فورًا، وأي تأخير أو تهاون يُعتبر عصيانًا.</li>
                     <li>يجب الالتزام بأعلى درجات الاحترام والاحترافية في التعامل مع المدنيين، بما يتوافق مع البروتوكول العسكري المعتمد.</li>
-                    <li>يُمنع استخدام شات القطاع لأي أحاديث جانبية أو مزاح. يُستخدم فقط للتعليمات والتبليغات الرسمية.</li>
+                    <li>يُمنع استخدام شات القطاع لأي أحاديث جانبية أو مزاح. يُخدم فقط للتعليمات والتبليغات الرسمية.</li>
                     <li>يُمنع على المقبولين مبدئيًا التحدث في شات القطاع حتى استلامهم رتبة جندي رسميًا.</li>
                     <li>لا يحق لأي فرد الاعتراض أو طلب تغيير الكود العسكري الخاص به المكلّف بها. التوزيع مسؤولية القيادة وحدها.</li>
                     <li>المشاركة في الحملات الأمنية والتدريبات واجبة على كل فرد.</li>
@@ -400,10 +410,12 @@
             </div>
         </section>
 
+        <!-- القسم الثاني: الأنظمة التخصصية (رصد المخالفات والتحضير) -->
         <section id="specialized-systems">
             <h2 class="section-title">أنظمة العمل والتشغيل الميداني</h2>
             <div class="grid-container">
                 
+                <!-- نظام رصد المخالفات -->
                 <div class="card">
                     <h3 style="margin-bottom:20px; color:#e2e8f0; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">نظام رصد المخالفات الميدانية</h3>
                     
@@ -433,6 +445,7 @@
                     </div>
                 </div>
 
+                <!-- نظام التحضير الميداني -->
                 <div class="card">
                     <h3 style="margin-bottom:20px; color:#e2e8f0; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">نظام التحضير والمباشرات</h3>
                     
@@ -453,7 +466,7 @@
                     
                     <div style="margin-bottom: 15px;">
                         <h4 class="system-sub-title">4. التاريخ والتوثيق</h4>
-                        <p class="system-desc">يستلزم وجوب ظهور التاريخ اليومي (اليوم / الشهر) في صورة تسجيل الدخول وكذلك في صورة الخروج.</p>
+                        <p class="system-desc">يستلزم وجوب ظهور التاريخ اليومي (اليوم / الشهر) في صورة تسجيل الدخول وأخرى في صورة الخروج.</p>
                     </div>
                     
                     <div style="margin-bottom: 15px;">
@@ -463,17 +476,19 @@
                     
                     <div>
                         <h4 class="system-sub-title">6. لقطات الدخول والخروج</h4>
-                        <p class="system-desc">يجب توفير وإافاق صورة واضحة لتسجيل الدخول وأخرى لتسجيل الخروج (إجباري).</p>
+                        <p class="system-desc">يجب توفير وإرفاق صورة واضحة لتسجيل الدخول وأخرى لتسجيل الخروج (إجباري).</p>
                     </div>
                 </div>
 
             </div>
         </section>
 
+        <!-- القسم الثالث: أسماء القيادات واللوائح والروابط الرسمية للقطاع -->
         <section id="leadership-and-links">
             <h2 class="section-title">القيادة واللوائح الرسمية</h2>
             <div class="grid-container">
                 
+                <!-- أسماء القيادات -->
                 <div class="card" style="grid-column: span 2;">
                     <h3 style="margin-bottom:20px; color:var(--accent-green);">أسماء قيادة قطاع أمن الطرق</h3>
                     
@@ -499,6 +514,7 @@
                     </div>
                 </div>
 
+                <!-- اللوائح والمستندات الرسمية -->
                 <div class="card">
                     <h3 style="margin-bottom:20px; color:var(--accent-green);">المستندات واللوائح</h3>
                     <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">الروابط والمستندات المعتمدة لأفراد القطاع لمراجعة وضبط آلية العمل الميداني والأنظمة القانونية:</p>
@@ -511,6 +527,7 @@
             </div>
         </section>
 
+        <!-- القسم الرابع: نظام المراجع الرسمية -->
         <section id="references">
             <h2 class="section-title">تسلسل المراجع الرسمية بالقطاع</h2>
             <div class="grid-container">
@@ -537,6 +554,7 @@
             </div>
         </section>
 
+        <!-- القسم الخامس: إنجازات القطاع -->
         <section id="achievements">
             <h2 class="section-title">إنجازات القوات الخاصة لأمن الطرق</h2>
             <div class="grid-container">
