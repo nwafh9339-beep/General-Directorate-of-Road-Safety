@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>القوات الخاصة لأمن الطرق | KR</title>
+    
+    <!-- وضع شعار القطاع مكان علامة الكوكب في المتصفح -->
+    <link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/1378346976718094367/1509441013280669786/C0FB6712-0348-4F30-ADC1-EDC6CB5D6EB5.png?ex=6a192ffd&is=6a17de7d&hm=f0ae4e7871279152c3cd639a2dd182347c6739bae9e7d49a63fb91cffff70eed&=&format=webp&quality=lossless&width=766&height=768">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;650;700&display=swap" rel="stylesheet">
@@ -37,7 +41,6 @@
             overflow-x: hidden;
         }
 
-        /* حركات الظهور الاحترافية المضافة حديثاً */
         @keyframes customFadeUp {
             from {
                 opacity: 0;
@@ -49,7 +52,6 @@
             }
         }
 
-        /* شاشات الترحيب والبدء */
         .screen-overlay {
             position: fixed;
             top: 0;
@@ -73,7 +75,6 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            /* تطبيق حركة الدخول هنا */
             animation: customFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
@@ -124,7 +125,6 @@
             border-color: var(--accent-green);
         }
 
-        /* لوحة التوقيت الحي المطور */
         .live-ticker-panel {
             background: linear-gradient(90deg, #090f0c, #111e17);
             border-bottom: 2px solid var(--border-color);
@@ -176,7 +176,6 @@
             gap: 5px;
         }
 
-        /* محتوى الموقع الأساسي */
         .main-content {
             opacity: 0;
             display: none;
@@ -225,7 +224,49 @@
             box-shadow: 0 5px 15px rgba(46, 204, 113, 0.08);
         }
 
-        .leader-item, .achievement-item {
+        .bottom-hero-banner {
+            background-image: linear-gradient(to top, rgba(5, 8, 6, 0.95) 15%, rgba(5, 8, 6, 0.3) 65%, rgba(0,0,0,0) 100%), url('https://media.discordapp.net/attachments/1378346976718094367/1509448783795327087/image.png?ex=6a19373a&is=6a17e5ba&hm=41e34034422cbdbfc95484b7cd4712e0572b07a2ebd44c956c503a059d34c0a7&=&format=webp&quality=lossless'); 
+            background-size: cover;
+            background-position: center 35%;
+            background-repeat: no-repeat;
+            height: 380px; 
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: flex-end; 
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+            margin-top: 40px;
+            animation: sectionFadeIn 1.2s ease-out;
+        }
+
+        .bottom-banner-overlay {
+            width: 100%;
+            padding: 40px;
+            color: #fff;
+            text-align: right;
+            z-index: 2;
+        }
+
+        .bottom-banner-overlay h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+        }
+
+        .bottom-banner-overlay p {
+            font-size: 1.1rem;
+            color: var(--accent-green);
+            font-weight: 650;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+        }
+
+        .leader-item, .achievement-item, .rank-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -239,7 +280,7 @@
             overflow: hidden;
         }
 
-        .leader-item:hover, .achievement-item:hover {
+        .leader-item:hover, .achievement-item:hover, .rank-item:hover {
             transform: translateX(-8px);
             background: linear-gradient(90deg, rgba(22, 100, 54, 0.15), rgba(11, 18, 14, 0.4));
             border-right-color: #ffffff;
@@ -339,12 +380,93 @@
             font-size: 1.1rem; 
             margin-bottom: 5px;
         }
+
+        /* 🆕 تنسيقات معرض الصور التفاعلي (السلايدر بالأسهم) */
+        .slider-section {
+            margin-top: 40px;
+        }
+
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .slider-arrows {
+            display: flex;
+            gap: 12px;
+        }
+
+        .arrow-btn {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .arrow-btn:hover {
+            background-color: var(--light-green);
+            border-color: var(--accent-green);
+            color: #ffffff;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+
+        .slider-container {
+            width: 100%;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+            background-color: #020302;
+        }
+
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 200%; /* يتسع لصورتين بجانب بعض */
+        }
+
+        .slide-img {
+            width: 50%; /* كل صورة تأخذ نصف المساحة الكلية العريضة */
+            height: auto;
+            max-height: 550px;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .bottom-hero-banner {
+                height: 230px;
+            }
+            .bottom-banner-overlay h2 {
+                font-size: 1.4rem;
+            }
+            .bottom-banner-overlay p {
+                font-size: 0.95rem;
+            }
+            .slide-img {
+                max-height: 300px;
+            }
+        }
     </style>
 </head>
 <body>
 
+    <!-- شاشة الترحيب الأولى -->
     <div id="welcome-screen" class="screen-overlay">
         <div class="welcome-content">
+            <img src="https://media.discordapp.net/attachments/1378346976718094367/1509441013280669786/C0FB6712-0348-4F30-ADC1-EDC6CB5D6EB5.png?ex=6a192ffd&is=6a17de7d&hm=f0ae4e7871279152c3cd639a2dd182347c6739bae9e7d49a63fb91cffff70eed&=&format=webp&quality=lossless&width=766&height=768" alt="شعار أمن الطرق" style="height: 140px; width: auto; margin-bottom: 25px; filter: drop-shadow(0 0 10px rgba(46, 204, 113, 0.2));">
             <h1 class="welcome-title">القوات الخاصة لأمن الطرق | KR</h1>
             <p class="welcome-desc">
                 أهلاً وسهلاً بكم في المنصة الإلكترونية للقوات الخاصة لأمن الطرق بمدينة KR
@@ -353,18 +475,17 @@
                 <br>
                 للبدء والدخول إلى المنصة، يرجى الضغط على الزر الموضح أدناه.
             </p>
-            
             <div class="disclaimer-box">
                 هذا الموقع أو النموذج الإلكتروني لا يمت للعالم الواقعي أو المملكة العربية السعودية وحكومتها أو أي جهة رسمية بِصلة، وإنما هو يحاكي واقع إفتراضي من وحي الخيال وجميع محتوياته لأغراض اللعب والترفيه فقط، ونُخلي مسؤوليتنا بشكل تام في حال إستغلال هذا الموقع لأغراض إحتيالية، تشويهية، إنتحالية، عرضية، أو إستخدامه خارج إطار اللعب والمتعة والترفيه.
             </div>
-
             <button class="btn-general" onclick="showPlatformIntro()">ابدأ الآن</button>
         </div>
     </div>
 
+    <!-- شاشة الترحيب الثانية الرسمية -->
     <div id="intro-screen" class="screen-overlay" style="display: none; opacity: 0;">
         <div class="welcome-content" id="intro-content">
-            <h1 class="welcome-title" style="color: var(--accent-green);">ترحيب رسمي</h1>
+            <h1 class="welcome-title" style="color: var(--accent-green);">تقديم رسمي</h1>
             <p class="welcome-desc" style="color: #ffffff; font-weight: bold; font-size: 1.25rem; text-align: center; margin-bottom: 20px;">
                 أهلاً وسهلاً بكم في منصة القوات الخاصة لأمن الطرق.
             </p>
@@ -379,8 +500,10 @@
         </div>
     </div>
 
+    <!-- الشريط العلوي المباشر بعد الدخول للموقع -->
     <div class="live-ticker-panel" id="ticker-top" style="display: none;">
         <div class="ticker-brand">
+            <img src="https://media.discordapp.net/attachments/1378346976718094367/1509441013280669786/C0FB6712-0348-4F30-ADC1-EDC6CB5D6EB5.png?ex=6a192ffd&is=6a17de7d&hm=f0ae4e7871279152c3cd639a2dd182347c6739bae9e7d49a63fb91cffff70eed&=&format=webp&quality=lossless&width=299&height=300" alt="شعار مصغر" style="height: 30px; width: auto; margin-left: 8px; vertical-align: middle;">
             <span>المنصة الرقمية للقوات الخاصة لأمن الطرق | KR</span>
         </div>
         <div class="time-date-container">
@@ -390,6 +513,7 @@
         </div>
     </div>
 
+    <!-- المحتوى الأساسي للموقع -->
     <div class="main-content" id="main-site">
         
         <section id="general-rules">
@@ -419,30 +543,24 @@
         <section id="specialized-systems">
             <h2 class="section-title">أنظمة العمل والتشغيل الميداني</h2>
             <div class="grid-container">
-                
                 <div class="card">
                     <h3 style="margin-bottom:20px; color:#e2e8f0; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">نظام رصد المخالفات الميدانية</h3>
-                    
                     <div style="margin-bottom: 15px;">
                         <h4 class="system-sub-title">1. إتمام المخالفة</h4>
                         <p class="system-desc">يجب رصد المخالفة وإتمامها وتصويرها بالكامل قبل وضعها في قنوات شات القوات الخاصة لأمن الطرق.</p>
                     </div>
-                    
                     <div style="margin-bottom: 15px;">
                         <h4 class="system-sub-title">2. مضاعفة المخالفات</h4>
                         <p class="system-desc">يمنع رصد أكثر من مخالفة واحدة للمواطن في نفس الوقت.</p>
                     </div>
-                    
                     <div style="margin-bottom: 15px;">
                         <h4 class="system-sub-title">3. المساهمون</h4>
                         <p class="system-desc">لا يتم احتساب من ساهم معك في تحرير المخالفة ضمن إحصائياتك الفردية.</p>
                     </div>
-                    
                     <div style="margin-bottom: 15px;">
                         <h4 class="system-sub-title">4. الصور والتوثيق</h4>
                         <p class="system-desc">لا يسمح نهائياً بوضع أكثر من صورة توثيقية واحدة في تقرير المخالفة الواحدة.</p>
                     </div>
-                    
                     <div>
                         <h4 class="system-sub-title">5. المخالفة في حال الخروج</h4>
                         <p class="system-desc">في حالة خروج المخالف من اللعبة بعد رصد المخالفة، تُحتسب المخالفة نظامياً لصالحك.</p>
@@ -451,48 +569,63 @@
 
                 <div class="card">
                     <h3 style="margin-bottom:20px; color:#e2e8f0; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">نظام التحضير والمباشرات</h3>
-                    
                     <div style="margin-bottom: 15px;">
                         <h4 class="system-sub-title">1. التيم الرسمي</h4>
                         <p class="system-desc">يشترط ويستلزم تواجدك الفعلي والكامل في وظيفة الشرطة أثناء المباشرة الميدانية للطرق.</p>
                     </div>
-                    
                     <div style="margin-bottom: 15px;">
                         <h4 class="system-sub-title">2. الحد الأعلى للتحضير</h4>
                         <p class="system-desc">أعلى مدة مباشرة مستمرة مسموح برفعها في المرة الواحدة هي 4 ساعات فقط.</p>
                     </div>
-                    
                     <div style="margin-bottom: 15px;">
                         <h4 class="system-sub-title">3. الحد الأدنى للتحضير</h4>
                         <p class="system-desc">أدنى مدة للمباشرة ليتم قبول تحضيرك هي 30 دقيقة كاملة.</p>
                     </div>
-                    
                     <div style="margin-bottom: 15px;">
                         <h4 class="system-sub-title">4. التاريخ والتوثيق</h4>
                         <p class="system-desc">يستلزم وجوب ظهور التاريخ اليومي (اليوم / الشهر) في صورة تسجيل الدخول وأخرى في صورة الخروج.</p>
                     </div>
-                    
                     <div style="margin-bottom: 15px;">
                         <h4 class="system-sub-title">5. عقوبة التزوير والتلاعب</h4>
                         <p class="system-desc">يمنع التلاعب في استبيان التحضير، ويؤدي ذلك إلى ملاحظة فورية، وفي حال التكرار يتم الرفع للقيادة لاتخاذ الإجراء الصارم.</p>
                     </div>
-                    
                     <div>
                         <h4 class="system-sub-title">6. لقطات الدخول والخروج</h4>
                         <p class="system-desc">يجب توفير وإرفاق صورة واضحة لتسجيل الدخول وأخرى لتسجيل الخروج (إجباري).</p>
                     </div>
                 </div>
+            </div>
+        </section>
 
+        <section id="military-ranks">
+            <h2 class="section-title">الهيكل الرتبي العسكري بالقطاع</h2>
+            <div class="card">
+                <div class="grid-container">
+                    <div>
+                        <div class="rank-item">
+                            <div><strong>مساعد محامي</strong> <p style="font-size:0.85rem; color:var(--text-muted); margin-top:3px;">متدرب أو مبتدئ يساعد المحامين في كتابة القضايا وتجهيز الملفات وحضور الجلسات.</p></div>
+                        </div>
+                        <div class="rank-item">
+                            <div><strong>قسم الرقابة التجارية</strong> <p style="font-size:0.85rem; color:var(--text-muted); margin-top:3px;">قسم مختص بمراقبة المخالفات التجارية مثل الغش، الاحتيال، الأسعار، والتستر التجاري.</p></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="rank-item">
+                            <div><strong>محامي د</strong> <p style="font-size:0.85rem; color:var(--text-muted); margin-top:3px;">أول درجة بالمحاماة، محامي مبتدئ بصلاحيات محدودة.</p></div>
+                        </div>
+                        <div class="rank-item">
+                            <div><strong>محامي ج</strong> <p style="font-size:0.85rem; color:var(--text-muted); margin-top:3px;">مستوى متقدم يمتلك صلاحيات أوسع في استلام ومباشرة قضايا القطاع المختلفة.</p></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="leadership-and-links">
             <h2 class="section-title">القيادة واللوائح الرسمية</h2>
             <div class="grid-container">
-                
                 <div class="card" style="grid-column: span 2;">
                     <h3 style="margin-bottom:20px; color:var(--accent-green);">أسماء قيادة قطاع القوات الخاصة لأمن الطرق</h3>
-                    
                     <div class="leader-item">
                         <div><strong>مسؤول القوات الخاصة لأمن الطرق | R-1:</strong> احمد الشهري</div>
                         <span class="discord-tag"><i class="fab fa-discord"></i> 7n7z</span>
@@ -518,12 +651,10 @@
                 <div class="card">
                     <h3 style="margin-bottom:20px; color:var(--accent-green);">المستندات واللوائح</h3>
                     <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">الروابط والمستندات المعتمدة لأفراد القطاع لمراجعة وضبط آلية العمل الميداني والأنظمة القانونية:</p>
-                    
                     <a href="https://docs.google.com/spreadsheets/d/12Tcl7uMLmljnIspA9I2xjWlT1x4IdfEscI3IuHuGMaU/edit?usp=drivesdk" target="_blank" class="link-button">
                         <span>لائحة القوات الخاصة لأمن الطرق</span> <i class="fas fa-file-excel" style="font-size: 1.3rem;"></i>
                     </a>
                 </div>
-
             </div>
         </section>
 
@@ -557,35 +688,88 @@
             <h2 class="section-title">إنجازات القوات الخاصة لأمن الطرق</h2>
             <div class="grid-container">
                 <div class="card" style="grid-column: 1 / -1; padding: 15px; background-color: transparent; border: none; box-shadow: none;">
-                    
                     <div class="achievement-item">
                         <div class="achievement-block">
                             <span class="achievement-text-title">تأمين السيطرة الكاملة على طريق الملك فهد</span>
                             <p style="font-size: 0.9rem; color: var(--text-muted);">تأمين وحماية الشريان الرئيسي لمدينة KR بنسبة انضباطية عالية وفرض هيبة القانون المروري والأمني على مدار الساعة.</p>
                         </div>
                     </div>
-                    
                     <div class="achievement-item">
                         <div class="achievement-block">
                             <span class="achievement-text-title">إحباط وضبط أكبر عمليات التهريب</span>
-                            <p style="font-size: 0.9rem; color: var(--text-muted);">الاشتباك مع مجموعات المهربين بحزم وإحباط إدخال المواد والمركبات غير النظامية للمدينة عبر الخطوط السريعة بكل كفاءة.</p>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">الاشتباك مع مجموعات المهربين بحزم وإحباط إدخل المواد والمركبات غير النظامية للمدينة عبر الخطوط السريعة بكل كفاءة.</p>
                         </div>
                     </div>
-
                     <div class="achievement-item">
                         <div class="achievement-block">
                             <span class="achievement-text-title">سرعة الاستجابة للبلاغات والتعافي</span>
                             <p style="font-size: 0.9rem; color: var(--text-muted);">تسجيل زمن قياسي في سرعة الانتقال ومباشرة الحوادث والتعامل المباشر الحازم مع الحالات الجنائية والأمنية الطارئة على الطرق الحيوية.</p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
+        <!-- 🆕 قسم معرض الصور التفاعلي الجديد (السلايدر بالأسهم) 🆕 -->
+        <section class="slider-section">
+            <div class="slider-header">
+                <h2 class="section-title" style="margin-bottom: 0;">التوثيق الميداني للقطاع</h2>
+                <!-- الأزرار والأسهم للتنقل يمين ويسار تظهر فوق السلايدر مباشرة -->
+                <div class="slider-arrows">
+                    <button class="arrow-btn" onclick="prevSlide()" aria-label="الصورة السابقة"><i class="fas fa-arrow-right"></i></button>
+                    <button class="arrow-btn" onclick="nextSlide()" aria-label="الصورة التالية"><i class="fas fa-arrow-left"></i></button>
+                </div>
+            </div>
+            
+            <div class="slider-container">
+                <div class="slider-wrapper" id="image-slider">
+                    <!-- السطر 433: ضع هنا رابط الصورة الأولى (مثال: صورة أفراد الميدان image_ace83a.jpg) -->
+                    <img src="https://media.discordapp.net/attachments/1378346976718094367/1509448783795327087/image.png?ex=6a19373a&is=6a17e5ba&hm=41e34034422cbdbfc95484b7cd4712e0572b07a2ebd44c956c503a059d34c0a7&=&format=webp&quality=lossless" class="slide-img" alt="لقطة ميدانية 1">
+                    
+                    <!-- السطر 436: ضع هنا رابط الصورة الثانية التي تريد الانتقال إليها بالأسهم -->
+                    <img src="https://media.discordapp.net/attachments/1378346976718094367/1509453583450378341/image.png?ex=6a193bb2&is=6a17ea32&hm=9ff3473bddb3503c8147625504a924e6e12e3149aa1fb16cbaf937210e4461ba&=&format=webp&quality=lossless" class="slide-img" alt="لقطة ميدانية 2">
+                </div>
+            </div>
+        </section>
+
+        <!-- البانر العسكري السفلي -->
+        <div class="bottom-hero-banner">
+            <div class="bottom-banner-overlay">
+                <h2>العيون الساهرة في الميدان</h2>
+                <p>انضباط، جاهزية، وردع لكل مخلّ بالأمن على الطرقات الحيوية.</p>
+            </div>
+        </div>
+
     </div>
 
     <script>
+        // 🆕 كود تشغيل وتحريك السلايدر عبر الأسهم
+        let currentSlideIndex = 0;
+        const sliderWrapper = document.getElementById('image-slider');
+
+        function updateSliderPosition() {
+            // بما أن العرض الكلي للغلاف 200% وكل صورة 50%، نتحرك بمقدار 50% لكل خطوة
+            sliderWrapper.style.transform = `translateX(${currentSlideIndex * 50}%)`;
+        }
+
+        function nextSlide() {
+            if (currentSlideIndex < 1) {
+                currentSlideIndex++;
+            } else {
+                currentSlideIndex = 0; // يعود للصورة الأولى إذا ضغطت بعد الأخيرة
+            }
+            updateSliderPosition();
+        }
+
+        function prevSlide() {
+            if (currentSlideIndex > 0) {
+                currentSlideIndex--;
+            } else {
+                currentSlideIndex = 1; // يذهب للصورة الثانية إذا ضغطت للخلف من البداية
+            }
+            updateSliderPosition();
+        }
+
         function showPlatformIntro() {
             const screen1 = document.getElementById('welcome-screen');
             const screen2 = document.getElementById('intro-screen');
@@ -598,7 +782,6 @@
                 screen1.style.display = 'none';
                 screen2.style.display = 'flex';
                 
-                // إعادة تشغيل الإنيميشن للشاشة الثانية عند ظهورها
                 introContent.style.animation = 'none';
                 introContent.offsetHeight; 
                 introContent.style.animation = 'customFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards';
