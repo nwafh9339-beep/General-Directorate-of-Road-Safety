@@ -241,6 +241,9 @@
             font-size: 0.85rem;
             font-family: monospace;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         /* روابط ولوائح القوات الخاصة */
@@ -361,9 +364,9 @@
             <p class="welcome-desc" style="text-align: justify;">
                 القوات الخاصة لأمن الطرق هي إحدى القطاعات الأمنية التابعة لوزارة الداخلية داخل مدينة KR، وتُعنى بحفظ أمن وسلامة الطرق السريعة وتأمين الحركة المرورية وفق أعلى معايير الانضباط والجاهزية الأمنية.
                 <br><br>
-                وتتولى القوات مهام التفتيش الأمني، واستلام ومباشرة الطرق الرئيسية والحيوية مثل طريق الملك فهد، إضافةً إلى تنفيذ عمليات البحث والتفتيش، وضبط المخالفين والمهربين، والتعامل مع الحالات الأمنية والبلاغات الطارئة بكل احترافية وحزم.
+                وتتولى القوات مهام التفتيش الأمني، واستلام ومباشرة الطرق الرئيسية والحيوية مثل طريق الملك فهد، إضافةً إلى تنفيذ عمليات البحث والتفتيش, وضبط المخالفين والمهربين، والتعامل مع الحالات الأمنية والبلاغات الطارئة بكل احترافية وحزم.
                 <br><br>
-                كما تعمل القوات الخاصة لأمن الطرق على تعزيز الأمن والاستقرار, وحماية مستخدمي الطرق، والتصدي لكافة الأنشطة غير النظامية، ضمن منظومة أمنية متكاملة تعتمد على الكفاءة، والانضباط، وسرعة الاستجابة.
+                كما تعمل القوات الخاصة لأمن الطرق على تعزيز الأمن والاستقرار، وحماية مستخدمي الطرق، والتصدي لكافة الأنشطة غير النظامية، ضمن منظومة أمنية متكاملة تعتمد على الكفاءة، والانضباط، وسرعة الاستجابة.
             </p>
             <!-- تعديل الزر بدقة هنا -->
             <button class="btn-general" onclick="enterMainSite()">الدخول الى منصة وتصفح الأنظمة ولوائح</button>
@@ -373,7 +376,7 @@
     <!-- لوحة التوقيت الحي المحدثة بالاسم الجديد المستقر علوياً -->
     <div class="live-ticker-panel" id="ticker-top" style="display: none;">
         <div class="ticker-brand">
-            <span>المنصة الرقمية القوات الخاصة لأمن الطرق | KR</span>
+            <span>المنصة الرقمية للقوات الخاصة لأمن الطرق | KR</span>
         </div>
         <div class="time-date-container">
             <div class="live-clock"><span id="clock-display">00:00:00 م</span></div>
@@ -490,27 +493,27 @@
                 
                 <!-- أسماء القيادات -->
                 <div class="card" style="grid-column: span 2;">
-                    <h3 style="margin-bottom:20px; color:var(--accent-green);">أسماء قيادة قطاع أمن الطرق</h3>
+                    <h3 style="margin-bottom:20px; color:var(--accent-green);">أسماء قيادة قطاع القوات الخاصة لأمن الطرق</h3>
                     
                     <div class="leader-item">
                         <div><strong>مسؤول القوات الخاصة لأمن الطرق | R-1:</strong> احمد الشهري</div>
-                        <span class="discord-tag">7n7z</span>
+                        <span class="discord-tag"><i class="fab fa-discord"></i> 7n7z</span>
                     </div>
                     <div class="leader-item">
                         <div><strong>نائب مسؤول القوات الخاصة لأمن الطرق | R-2:</strong> احمد الغامدي</div>
-                        <span class="discord-tag">99qo_</span>
+                        <span class="discord-tag"><i class="fab fa-discord"></i> 99qo_</span>
                     </div>
                     <div class="leader-item">
                         <div><strong>مساعد مسؤول القوات الخاصة لأمن الطرق | R-3:</strong> سطام العتيبي</div>
-                        <span class="discord-tag">qmxe.1</span>
+                        <span class="discord-tag"><i class="fab fa-discord"></i> qmxe.1</span>
                     </div>
                     <div class="leader-item">
                         <div><strong>إدارة القوات الخاصة لأمن الطرق | R-4:</strong> نايف الرشيدي</div>
-                        <span class="discord-tag">am.404</span>
+                        <span class="discord-tag"><i class="fab fa-discord"></i> am.404</span>
                     </div>
                     <div class="leader-item" style="border-right-color: var(--warning-red);">
-                        <div><strong>إدارة القوات الخاصة لأمن الطرق:</strong> لا يوجد</div>
-                        <span class="discord-tag" style="background-color: #7f8c8d;">N/A</span>
+                        <div><strong>إدارة القوات الخاصة لأمن الطرق | R-5:</strong> لا يوجد</div>
+                        <span class="discord-tag" style="background-color: #7f8c8d;"><i class="fab fa-discord"></i> N/A</span>
                     </div>
                 </div>
 
@@ -533,22 +536,22 @@
             <div class="grid-container">
                 <div class="card">
                     <h4>المرجع الأول</h4>
-                    <p style="color:var(--accent-green); font-weight:bold; margin:5px 0;">إدارة أمن الطرق</p>
+                    <p style="color:var(--accent-green); font-weight:bold; margin:5px 0;">إدارة القوات الخاصة لأمن الطرق</p>
                     <p style="font-size:0.9rem; color:var(--text-muted);">تمثل المرجع التنفيذي الأعلى والمشرف الأساسي. كافة قراراتها واجبة التنفيذ فوراً وبلا نقاش.</p>
                 </div>
                 <div class="card">
                     <h4>المرجع الثاني</h4>
-                    <p style="color:var(--accent-green); font-weight:bold; margin:5px 0;">مساعد مسؤول أمن الطرق</p>
+                    <p style="color:var(--accent-green); font-weight:bold; margin:5px 0;">مساعد مسؤول القوات الخاصة لأمن الطرق</p>
                     <p style="font-size:0.9rem; color:var(--text-muted);">يمتلك كافة الصلاحيات الميدانية والإدارية المباشرة ويُرجع إليه بعد المسؤول والنائب وفي غيابهما.</p>
                 </div>
                 <div class="card">
                     <h4>المرجع الثالث</h4>
-                    <p style="color:var(--accent-green); font-weight:bold; margin:5px 0;">نائب مسؤول أمن الطرق</p>
+                    <p style="color:var(--accent-green); font-weight:bold; margin:5px 0;">نائب مسؤول القوات الخاصة لأمن الطرق</p>
                     <p style="font-size:0.9rem; color:var(--text-muted);">المتابع الأول لسير الكمائن ومباشرة الطرق والمهربين والتأكد من تطبيق العقوبات بالتنسيق مع القائد.</p>
                 </div>
                 <div class="card">
                     <h4>المرجع الرابع</h4>
-                    <p style="color:var(--accent-green); font-weight:bold; margin:5px 0;">مسؤول أمن الطرق</p>
+                    <p style="color:var(--accent-green); font-weight:bold; margin:5px 0;">مسؤول القوات الخاصة لأمن الطرق</p>
                     <p style="font-size:0.9rem; color:var(--text-muted);">المرجع النهائي والأخير للقطاع، وضع في نهاية السلسلة للحد من الإزعاج ويتم التواصل معه في الحالات الطارئة فقط.</p>
                 </div>
             </div>
