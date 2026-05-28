@@ -11,16 +11,16 @@
 
     <style>
         :root {
-            --bg-color: #070c09;
-            --card-bg: #0d1612;
-            --primary-green: #113f25;
-            --light-green: #166436;
+            --bg-color: #050806;
+            --card-bg: #0b120e;
+            --primary-green: #0d331e;
+            --light-green: #125430;
             --accent-green: #2ecc71;
             --text-main: #ffffff;
-            --text-muted: #a2b3aa;
-            --border-color: #16281e;
+            --text-muted: #96a79e;
+            --border-color: #112218;
             --warning-red: #e74c3c;
-            --glow-color: rgba(46, 204, 113, 0.2);
+            --glow-color: rgba(46, 204, 113, 0.25);
         }
 
         * {
@@ -37,26 +37,26 @@
             overflow-x: hidden;
         }
 
-        /* شاشة الترحيب والدخول */
-        #welcome-screen {
+        /* شاشات الترحيب والبدء */
+        .screen-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #040706 0%, #0d1612 100%);
+            background: linear-gradient(135deg, #030504 0%, #0b120e 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             z-index: 9999;
-            transition: all 0.6s ease-in-out;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 20px;
         }
 
         .welcome-content {
             text-align: center;
-            max-width: 650px;
-            padding: 20px;
+            max-width: 750px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -64,18 +64,19 @@
         }
 
         .welcome-title {
-            font-size: 2.3rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             color: var(--text-main);
-            text-shadow: 0 0 10px rgba(46, 204, 113, 0.3);
+            text-shadow: 0 0 15px rgba(46, 204, 113, 0.3);
         }
 
         .welcome-desc {
             color: var(--text-muted);
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 25px;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: justify;
         }
 
         .disclaimer-box {
@@ -90,12 +91,7 @@
             text-align: justify;
         }
 
-        .disclaimer-box i {
-            margin-left: 5px;
-            color: var(--warning-red);
-        }
-
-        .btn-start {
+        .btn-general {
             background: linear-gradient(135deg, var(--primary-green) 0%, var(--light-green) 100%);
             color: white;
             border: 2px solid rgba(255,255,255,0.1);
@@ -108,10 +104,67 @@
             transition: all 0.3s ease;
         }
 
-        .btn-start:hover {
+        .btn-general:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.5);
+            box-shadow: 0 8px 25px var(--glow-color);
             border-color: var(--accent-green);
+        }
+
+        /* لوحة التوقيت الحي المطور */
+        .live-ticker-panel {
+            background: linear-gradient(90deg, #090f0c, #111e17);
+            border-bottom: 2px solid var(--border-color);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        .ticker-brand {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ticker-brand i {
+            color: var(--accent-green);
+            animation: pulse 2s infinite;
+        }
+
+        .time-date-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-family: monospace, 'Cairo';
+            font-size: 1.05rem;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .live-clock {
+            color: var(--accent-green);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .live-date {
+            color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         /* محتوى الموقع الأساسي */
@@ -124,26 +177,14 @@
             transition: opacity 0.8s ease-out;
         }
 
-        /* تأثير الحركة والوميض الأخضر للأقسام */
         section {
-            animation: sectionGlowIn 1.2s ease-out;
             margin-bottom: 60px;
+            animation: sectionFadeIn 1s ease-out;
         }
 
-        @keyframes sectionGlowIn {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-                box-shadow: 0 0 0 var(--glow-color);
-            }
-            50% {
-                box-shadow: 0 10px 30px var(--glow-color);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-                box-shadow: none;
-            }
+        @keyframes sectionFadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .section-title {
@@ -152,7 +193,7 @@
             border-right: 5px solid var(--accent-green);
             padding-right: 15px;
             color: #e2e8f0;
-            text-shadow: 0 0 15px rgba(46, 204, 113, 0.2);
+            text-shadow: 0 0 15px rgba(46, 204, 113, 0.15);
         }
 
         .grid-container {
@@ -166,58 +207,70 @@
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 25px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-green);
-            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.15);
+            border-color: var(--light-green);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.08);
         }
 
-        /* تصميم قسم القيادة */
+        /* تأثير الحركة المطور لقسم القيادة */
         .leader-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
             background-color: rgba(255,255,255,0.01);
-            padding: 15px;
+            padding: 18px 20px;
             border-radius: 8px;
-            margin-bottom: 12px;
-            border-right: 3px solid var(--accent-green);
+            margin-bottom: 15px;
+            border-right: 4px solid var(--accent-green);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leader-item:hover {
+            transform: translateX(-8px);
+            background: linear-gradient(90deg, rgba(22, 100, 54, 0.15), rgba(11, 18, 14, 0.4));
+            border-right-color: #ffffff;
+            box-shadow: 0 5px 15px var(--glow-color);
         }
 
         .discord-tag {
             background-color: #5865F2;
             color: white;
-            padding: 4px 10px;
+            padding: 5px 12px;
             border-radius: 5px;
             font-size: 0.85rem;
             font-family: monospace;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        /* روابط ولوائح */
+        /* روابط ولوائح القوات الخاصة */
         .link-button {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background-color: var(--primary-green);
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--light-green) 100%);
             color: white;
             text-decoration: none;
-            padding: 15px;
+            padding: 18px;
             border-radius: 8px;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.05);
             transition: all 0.3s;
         }
 
         .link-button:hover {
-            background-color: var(--light-green);
-            box-shadow: 0 0 10px rgba(46, 204, 113, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.25);
+            border-color: var(--accent-green);
         }
 
-        /* القوانين والمراجع والأعمدة */
+        /* القوانين المرقمة */
         .list-numbered {
             list-style-type: none;
             counter-reset: my-counter;
@@ -250,11 +303,11 @@
             border: 1px solid var(--accent-green);
         }
 
-        /* أنظمة فرعية (المخالفات والتحضير) */
+        /* الأنظمة الفرعية للرصد والتحضير */
         .system-sub-title {
             color: var(--accent-green);
             font-size: 1.15rem;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -266,58 +319,47 @@
             line-height: 1.6;
         }
 
-        /* قسم الحماية الخاص بالادارة */
-        .admin-lock-zone {
-            background-color: #0f0b06;
-            border: 1px dashed #d35400;
-            border-radius: 12px;
-            padding: 40px;
-            text-align: center;
-            margin-top: 40px;
+        /* قسم الإنجازات */
+        .achievement-item {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            background: rgba(255,255,255,0.01);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(46, 204, 113, 0.05);
         }
 
-        .input-code {
-            background-color: #050605;
-            border: 1px solid #d35400;
-            color: white;
-            padding: 12px;
+        .achievement-icon {
+            background-color: var(--primary-green);
+            color: var(--accent-green);
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 1.2rem;
-            text-align: center;
-            border-radius: 8px;
-            margin-top: 15px;
-            width: 200px;
-            letter-spacing: 3px;
+            flex-shrink: 0;
+            border: 1px solid var(--light-green);
         }
 
-        .btn-unlock {
-            background-color: #d35400;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-
-        .secret-content {
-            display: none;
-            animation: fadeIn 1s forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
         }
     </style>
 </head>
 <body>
 
-    <div id="welcome-screen">
+    <!-- الشاشة الأولى: التنويه الترفيهي وفك المسؤولية -->
+    <div id="welcome-screen" class="screen-overlay">
         <div class="welcome-content">
             <h1 class="welcome-title">القوات الخاصة لأمن الطرق | KR</h1>
-            <p class="welcome-desc">
-                هي أحد القطاعات العامة في وزارة الداخلية داخل مدينة كي ار. ومن مهامنا الأساسية تأمين واستلام التفتيش، واستلام ومباشرة الطرق السريعة مثل طريق الملك فهد، والبحث والتفتيش والاشتباك مع المهربين لضمان أعلى مستويات الأمان والانضباط.
+            <p class="welcome-desc" style="text-align: center;">
+                مرحباً بكم في البوابة الإلكترونية لقطاع القوات الخاصة لأمن الطرق بمدينة كي ار الفيدرالية. اضغط على الزر أدناه لبدء الولوج للمنصة.
             </p>
             
             <div class="disclaimer-box">
@@ -325,17 +367,151 @@
                 هذا الموقع أو النموذج الإلكتروني لا يمت للعالم الواقعي أو المملكة العربية السعودية وحكومتها أو أي جهة رسمية بِصلة، وإنما هو يحاكي واقع إفتراضي من وحي الخيال وجميع محتوياته لأغراض اللعب والترفيه فقط، ونُخلي مسؤوليتنا بشكل تام في حال إستغلال هذا الموقع لأغراض إحتيالية، تشويهية، إنتحالية، عرضية، أو إستخدامه خارج إطار اللعب والمتعة والترفيه.
             </div>
 
-            <button class="btn-start" onclick="enterSite()">ابدأ الآن <i class="fas fa-arrow-left"></i></button>
+            <button class="btn-general" onclick="showPlatformIntro()">ابدأ الآن <i class="fas fa-arrow-left"></i></button>
         </div>
     </div>
 
+    <!-- الشاشة الثانية: الترحيب والتعريف الرسمي بالقطاع -->
+    <div id="intro-screen" class="screen-overlay" style="display: none; opacity: 0;">
+        <div class="welcome-content">
+            <h1 class="welcome-title" style="color: var(--accent-green);"><i class="fas fa-bullhorn"></i> ترحيب رسمي</h1>
+            <p class="welcome-desc" style="color: #ffffff; font-weight: bold; font-size: 1.25rem; text-align: center; margin-bottom: 20px;">
+                أهلاً وسهلاً بكم في منصة القوات الخاصة لأمن الطرق.
+            </p>
+            <p class="welcome-desc">
+                القوات الخاصة لأمن الطرق هي إحدى القطاعات الأمنية التابعة لوزارة الداخلية داخل مدينة KR، وتُعنى بحفظ أمن وسلامة الطرق السريعة وتأمين الحركة المرورية وفق أعلى معايير الانضباط والجاهزية الأمنية.
+                <br><br>
+                وتتولى القوات مهام التفتيش الأمني، واستلام ومباشرة الطرق الرئيسية والحيوية مثل طريق الملك فهد، إضافةً إلى تنفيذ عمليات البحث والتفتيش، وضبط المخالفين والمهربين، والتعامل مع الحالات الأمنية والبلاغات الطارئة بكل احترافية وحزم.
+                <br><br>
+                كما تعمل القوات الخاصة لأمن الطرق على تعزيز الأمن والاستقرار، وحماية مستخدمي الطرق، والتصدي لكافة الأنشطة غير النظامية، ضمن منظومة أمنية متكاملة تعتمد على الكفاءة، والانضباط، وسرعة الاستجابة.
+            </p>
+            <button class="btn-general" onclick="enterMainSite()">الدخول إلى المنصة وتصفح الأقسام <i class="fas fa-sign-in-alt"></i></button>
+        </div>
+    </div>
+
+    <!-- لوحة التوقيت الحي العلوي الملتصق بالسقف -->
+    <div class="live-ticker-panel" id="ticker-top" style="display: none;">
+        <div class="ticker-brand">
+            <i class="fas fa-shield-halved"></i>
+            <span>المنصة الرقمية لأمن الطرق | KR</span>
+        </div>
+        <div class="time-date-container">
+            <div class="live-clock"><i class="far fa-clock"></i> <span id="clock-display">00:00:00 م</span></div>
+            <div class="live-date"><i class="far fa-calendar-alt"></i> <span id="gregorian-display">-- / -- / ----</span></div>
+            <div class="live-date"><i class="fas fa-moon"></i> <span id="hijri-display">-- / -- / ---- هـ</span></div>
+        </div>
+    </div>
+
+    <!-- محتوى الموقع الأساسي المرتب هيدروليكياً -->
     <div class="main-content" id="main-site">
         
-        <!-- قسم القيادة -->
-        <section id="leadership">
-            <h2 class="section-title"><i class="fas fa-shield-alt"></i> قيادة قطاع أمن الطرق</h2>
+        <!-- القسم الأول: القوانين العامة للقطاع -->
+        <section id="general-rules">
+            <h2 class="section-title"><i class="fas fa-gavel"></i> قوانين القوات الخاصة لأمن الطرق</h2>
+            <div class="card">
+                <ul class="list-numbered">
+                    <li>الالتزام باحترام الجميع دون استثناء، سواء كانوا أفرادًا، ضباطًا، قياديين أو مواطنين، وعدم التعدي أو التقليل من أي طرف.</li>
+                    <li>الانضباط الميداني غير قابل للنقاش، ويُمنع الاستهتار أو إهمال التعليمات أثناء أداء المهام.</li>
+                    <li>يُتوقع من كل فرد التفاعل والمشاركة في مهام القطاع بشكل مستمر، والتقصير مرفوض.</li>
+                    <li>يمنع الدخول إلى المناطق غير الآمنة دون تصريح مباشر من القيادة أو أحد الضباط.</li>
+                    <li>أي شكل من أشكال السخرية أو الاستهزاء بالقطاع أو القطاعات الأخرى مرفوض تمامًا ويُعاقب عليه.</li>
+                    <li>الكذب أو التزوير في النماذج والمباشرات يُعد تجاوزًا خطيرًا، وتُطبق على مرتكبه العقوبات القصوى.</li>
+                    <li>الأوامر الصادرة من قيادة القطاع أو القيادة واجبة التنفيذ فورًا، وأي تأخير أو تهاون يُعتبر عصيانًا.</li>
+                    <li>يجب الالتزام بأعلى درجات الاحترام والاحترافية في التعامل مع المدنيين، بما يتوافق مع البروتوكول العسكري المعتمد.</li>
+                    <li>يُمنع استخدام شات القطاع لأي أحاديث جانبية أو مزاح. يُستخدم فقط للتعليمات والتبليغات الرسمية.</li>
+                    <li>يُمنع على المقبولين مبدئيًا التحدث في شات القطاع حتى استلامهم رتبة جندي رسميًا.</li>
+                    <li>لا يحق لأي فرد الاعتراض أو طلب تغيير الكود العسكري الخاص به المكلّف بها. التوزيع مسؤولية القيادة وحدها.</li>
+                    <li>المشاركة في الحملات الأمنية والتدريبات واجبة على كل فرد.</li>
+                    <li>الالتزام بالأنظمة المرورية داخل الميدان إلزامي. المخالفات تُعامل بصرامة دون استثناء.</li>
+                    <li>يُمنع التكبر أو التباهي بالرتب أو المهام. كل فرد يُحاسب بفعله وليس بمكانته.</li>
+                    <li>يُمنع طلب المناصب أو التلميح لها. الترقية تُمنح بناءً على الانضباط والكفاءة، وليس بالرغبة الشخصية.</li>
+                </ul>
+                <p style="color:#e74c3c; font-size:0.9rem; margin-top:20px; font-weight:bold;"><i class="fas fa-info-circle"></i> تنويه عسكري: تعتبر هذه اللوائح نافذة من تاريخ صدورها وهي قابلة للتعديل والمحاسبة الفورية في حال مخالفتها.</p>
+            </div>
+        </section>
+
+        <!-- القسم الثاني: الأنظمة التخصصية (رصد المخالفات والتحضير) -->
+        <section id="specialized-systems">
+            <h2 class="section-title"><i class="fas fa-folder-tree"></i> أنظمة العمل والتشغيل الميداني</h2>
             <div class="grid-container">
-                <div class="card" style="grid-column: 1 / -1;">
+                
+                <!-- نظام رصد المخالفات -->
+                <div class="card">
+                    <h3 style="margin-bottom:20px; color:#e2e8f0; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;"><i class="fas fa-camera" style="color:var(--accent-green);"></i> نظام رصد المخالفات الميدانية</h3>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <h4 class="system-sub-title">1. إتمام المخالفة</h4>
+                        <p class="system-desc">يجب رصد المخالفة وإتمامها وتصويرها بالكامل قبل وضعها في قنوات شات القوات الخاصة لأمن الطرق.</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <h4 class="system-sub-title">2. مضاعفة المخالفات</h4>
+                        <p class="system-desc">يمنع رصد أكثر من مخالفة واحدة للمواطن في نفس الوقت (تُمنع العشوائية).</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <h4 class="system-sub-title">3. المساهمون</h4>
+                        <p class="system-desc">لا يتم احتساب من ساهم معك في تحرير المخالفة ضمن إحصائياتك الفردية.</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <h4 class="system-sub-title">4. الصور والتوثيق</h4>
+                        <p class="system-desc">لا يسمح نهائياً بوضع أكثر من صورة توثيقية واحدة في تقرير المخالفة الواحدة.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="system-sub-title">5. خروج المخالف (F8)</h4>
+                        <p class="system-desc">في حالة خروج المخالف من اللعبة فجأة بعد رصد المخالفة، تُحتسب المخالفة نظامياً لصالحك.</p>
+                    </div>
+                </div>
+
+                <!-- نظام التحضير الميداني -->
+                <div class="card">
+                    <h3 style="margin-bottom:20px; color:#e2e8f0; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;"><i class="fas fa-clipboard-user" style="color:var(--accent-green);"></i> نظام التحضير والمباشرات</h3>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <h4 class="system-sub-title">1. التيم الوظيفي</h4>
+                        <p class="system-desc">يشترط ويستلزم تواجدك الفعلي والكامل في وظيفة الشرطة أثناء المباشرة الميدانية للطرق.</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <h4 class="system-sub-title">2. الحد الأعلى للتحضير</h4>
+                        <p class="system-desc">أعلى مدة مباشرة مستمرة مسموح برفعها في المرة الواحدة هي 4 ساعات فقط.</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <h4 class="system-sub-title">3. الحد الأدنى للتحضير</h4>
+                        <p class="system-desc">أدنى مدة ميكانيكية للمباشرة ليتم قبول تحضيرك هي 30 دقيقة كاملة.</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <h4 class="system-sub-title">4. التاريخ والتوقيت</h4>
+                        <p class="system-desc">يستلزم وجوب ظهور التاريخ اليومي (اليوم / الشهر) في صورة تسجيل الدخول وكذلك في صورة الخروج.</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <h4 class="system-sub-title">5. عقوبة التزوير والتلاعب</h4>
+                        <p class="system-desc">يمنع التلاعب في استبيان التحضير، ويؤدي ذلك إلى ملاحظة فورية، وفي حال التكرار يتم الرفع للقيادة لاتخاذ الإجراء الصارم.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="system-sub-title">6. لقطات الدخول والخروج</h4>
+                        <p class="system-desc">يجب توثيق وإرفاق صورة واضحة لتسجيل الدخول وأخرى لتسجيل الخروج (إجباري ناصع).</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- القسم الثالث: أسماء القيادات واللوائح والروابط الرسمية للقطاع -->
+        <section id="leadership-and-links">
+            <h2 class="section-title"><i class="fas fa-id-card-clip"></i> القيادة واللوائح الرسمية</h2>
+            <div class="grid-container">
+                
+                <!-- أسماء القيادات مع تأثير الحركة المطور -->
+                <div class="card" style="grid-column: span 2;">
+                    <h3 style="margin-bottom:20px; color:var(--accent-green);"><i class="fas fa-users"></i> أسماء قيادة قطاع أمن الطرق</h3>
+                    
                     <div class="leader-item">
                         <div><strong>مسؤول أمن الطرق:</strong> عبدالله العتيبي</div>
                         <span class="discord-tag"><i class="fab fa-discord"></i> 0p_a</span>
@@ -357,236 +533,159 @@
                         <span class="discord-tag"><i class="fab fa-discord"></i> khalid9556</span>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- قسم اللوائح والأنظمة العامة للقطاع -->
-        <section id="rules-and-links">
-            <h2 class="section-title"><i class="fas fa-book-open"></i> الأنظمة والقوانين العامة</h2>
-            <div class="grid-container">
+                <!-- اللوائح والروابط المباشرة بدون تعقيد إداري -->
                 <div class="card">
-                    <h3 style="margin-bottom:15px; color:var(--accent-green);"><i class="fas fa-link"></i> اللوائح والروابط</h3>
+                    <h3 style="margin-bottom:20px; color:var(--accent-green);"><i class="fas fa-file-lines"></i> المستندات والنماذج</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">الروابط والمستندات المعتمدة لأفراد القطاع الميدانيين لمراجعة اللائحة ورفع الترقيات:</p>
+                    
                     <a href="https://docs.google.com/spreadsheets/d/12Tcl7uMLmljnIspA9I2xjWlT1x4IdfEscI3IuHuGMaU/edit?usp=drivesdk" target="_blank" class="link-button">
-                        <span>لائحة القوات الخاصة لأمن الطرق</span> <i class="fas fa-file-excel"></i>
+                        <span>لائحة القوات الخاصة لأمن الطرق</span> <i class="fas fa-file-excel" style="font-size: 1.3rem;"></i>
                     </a>
+                    
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSdBVz6vIeKZe5eiiM-cHhYzz_CSakApg-QW02ahE_xWbus6Rg/viewform" target="_blank" class="link-button">
-                        <span>طلب ترقية قطاع أمن الطرق</span> <i class="fas fa-file-alt"></i>
+                        <span>طلب ترقية قطاع أمن الطرق</span> <i class="fas fa-file-alt" style="font-size: 1.3rem;"></i>
                     </a>
                 </div>
 
-                <div class="card" style="grid-column: span 2;">
-                    <h3 style="margin-bottom:15px; color:var(--accent-green);"><i class="fas fa-gavel"></i> قوانين القوات الخاصة لأمن الطرق</h3>
-                    <ul class="list-numbered">
-                        <li>الالتزام باحترام الجميع دون استثناء، سواء كانوا أفرادًا، ضباطًا، قياديين أو مواطنين، وعدم التعدي أو التقليل من أي طرف.</li>
-                        <li>الانضباط الميداني غير قابل للنقاش، ويُمنع الاستهتار أو إهمال التعليمات أثناء أداء المهام.</li>
-                        <li>يُتوقع من كل فرد التفاعل والمشاركة في مهام القطاع بشكل مستمر، والتقصير مرفوض.</li>
-                        <li>يمنع الدخول إلى المناطق غير الآمنة دون تصريح مباشر من القيادة أو أحد الضباط.</li>
-                        <li>أي شكل من أشكال السخرية أو الاستهزاء بالقطاع أو القطاعات الأخرى مرفوض تمامًا ويُعاقب عليه.</li>
-                        <li>الكذب أو التزوير في النماذج والمباشرات يُعد تجاوزًا خطيرًا، وتُطبق على مرتكبه العقوبات القصوى.</li>
-                        <li>الأوامر الصادرة من قيادة القطاع أو القيادة واجبة التنفيذ فورًا، وأي تأخير أو تهاون يُعتبر عصيانًا.</li>
-                        <li>يجب الالتزام بأعلى درجات الاحترام والاحترافية في التعامل مع المدنيين، بما يتوافق مع البروتوكول العسكري المعتمد.</li>
-                        <li>يُمنع استخدام شات القطاع لأي أحاديث جانبية أو مزاح. يُستخدم فقط للتعليمات والتبليغات الرسمية.</li>
-                        <li>يُمنع على المقبولين مبدئيًا التحدث في شات القطاع حتى استلامهم رتبة جندي رسميًا.</li>
-                        <li>لا يحق لأي فرد الاعتراض أو طلب تغيير الكود العسكري الخاص به المكلّف بها. التوزيع مسؤولية القيادة وحدها.</li>
-                        <li>المشاركة في الحملات الأمنية والتدريبات واجبة على كل فرد.</li>
-                        <li>الالتزام بالأنظمة المرورية داخل الميدان إلزامي. المخالفات تُعامل بصرامة دون استثناء.</li>
-                        <li>يُمنع التكبر أو التباهي بالرتب أو المهام. كل فرد يُحاسب بفعله وليس بمكانته.</li>
-                        <li>يُمنع طلب المناصب أو التلميح لها. الترقية تُمنح بناءً على الانضباط والكفاءة، وليس بالرغبة الشخصية.</li>
-                    </ul>
-                    <p style="color:#e74c3c; font-size:0.9rem; margin-top:15px; font-weight:bold;">تنويه: القوانين قابلة للتعديل في أي وقت من قبل إدارة القطاع.</p>
-                </div>
             </div>
         </section>
 
-        <!-- قسم الأنظمة التخصصية لأمن الطرق (رصد المخالفات والتحضير) -->
-        <section id="specialized-systems">
-            <h2 class="section-title"><i class="fas fa-cogs"></i> الأنظمة التخصصية للقطاع</h2>
-            <div class="grid-container">
-                
-                <!-- نظام رصد المخالفات -->
-                <div class="card">
-                    <h3 style="margin-bottom:20px; color:#e2e8f0; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;"><i class="fas fa-bullseye" style="color:var(--accent-green);"></i> نظام رصد المخالفات</h3>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <h4 class="system-sub-title">1. إتمام المخالفة</h4>
-                        <p class="system-desc">يجب رصد المخالفة وإتمامها وتصويرها قبل وضعها في شات القوات الخاصة لأمن الطرق.</p>
-                    </div>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <h4 class="system-sub-title">2. مضاعفة المخالفات</h4>
-                        <p class="system-desc">يمنع رصد أكثر من مخالفة واحدة للمواطن في نفس الوقت.</p>
-                    </div>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <h4 class="system-sub-title">3. المساهمون</h4>
-                        <p class="system-desc">لا يتم احتساب من ساهم معك في تحرير المخالفة.</p>
-                    </div>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <h4 class="system-sub-title">4. الصور</h4>
-                        <p class="system-desc">لا يسمح بوضع أكثر من صورة في مخالفة واحدة.</p>
-                    </div>
-                    
-                    <div>
-                        <h4 class="system-sub-title">5. المخالفة في حال الخروج</h4>
-                        <p class="system-desc">في حالة خروج المخالف من اللعبة بعد رصد المخالفة، تُحتسب المخالفة لصالحك.</p>
-                    </div>
-                </div>
-
-                <!-- نظام التحضير الخاص بالقوات الخاصة -->
-                <div class="card">
-                    <h3 style="margin-bottom:20px; color:#e2e8f0; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;"><i class="fas fa-user-check" style="color:var(--accent-green);"></i> نظام التحضير</h3>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <h4 class="system-sub-title">1. التيم الرسمي</h4>
-                        <p class="system-desc">يشترط تواجدك في وظيفة الشرطة أثناء المباشرة الميدانية.</p>
-                    </div>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <h4 class="system-sub-title">2. الحد الأعلى من التحضير</h4>
-                        <p class="system-desc">أعلى مدة مسموح بها للمباشرة المستمرة هي 4 ساعات.</p>
-                    </div>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <h4 class="system-sub-title">3. الحد الأدنى من التحضير</h4>
-                        <p class="system-desc">أدنى مدة للمباشرة ليتم احتسابها هي 30 دقيقة.</p>
-                    </div>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <h4 class="system-sub-title">4. التاريخ والتوثيق</h4>
-                        <p class="system-desc">تستلزم المباشرة وجود التاريخ (اليوم / الشهر) واضحًا في صورة تسجيل الدخول والخروج.</p>
-                    </div>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <h4 class="system-sub-title">5. عقوبة التزوير</h4>
-                        <p class="system-desc">يمنع التلاعب في استبيان التحضير، ويؤدي ذلك إلى ملاحظة داخل القطاع وفي حال تكرار ذلك سيتم تبليغ القيادة فوراُ.</p>
-                    </div>
-                    
-                    <div>
-                        <h4 class="system-sub-title">6. تسجيل الدخول والخروج</h4>
-                        <p class="system-desc">يجب توفير وإرفاق صورة توضح تسجيل الدخول وتسجيل الخروج (إجباري).</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- نظام المراجع الرسمية بعد التعديل -->
+        <!-- القسم الرابع: نظام المراجع الرسمية (المعدل والمبسط) -->
         <section id="references">
-            <h2 class="section-title"><i class="fas fa-sitemap"></i> نظام المراجع الرسمية بالقطاع</h2>
+            <h2 class="section-title"><i class="fas fa-sitemap"></i> تسلسل المراجع الرسمية بالقطاع</h2>
             <div class="grid-container">
                 <div class="card">
                     <h4>المرجع الأول</h4>
                     <p style="color:var(--accent-green); font-weight:bold; margin:5px 0;">📋 إدارة أمن الطرق</p>
-                    <p style="font-size:0.9rem; color:var(--text-muted);">تمثل الإدارة المرجع الأعلى وصاحبة القرار النهائي للقطاع بوزارة الداخلية. جميع التوجيهات واجبة التنفيذ.</p>
+                    <p style="font-size:0.9rem; color:var(--text-muted);">تمثل المرجع التنفيذي الأعلى والمشرف الأساسي. كافة قراراتها واجبة التنفيذ فوراً وبلا نقاش.</p>
                 </div>
                 <div class="card">
                     <h4>المرجع الثاني</h4>
                     <p style="color:var(--accent-green); font-weight:bold; margin:5px 0;">مساعد مسؤول أمن الطرق</p>
-                    <p style="font-size:0.9rem; color:var(--text-muted);">يأتي بعد المسؤول والنائب مباشرة، ويمتلك كامل الصلاحيات الإدارية والميدانية في حال عدم تواجدهما.</p>
+                    <p style="font-size:0.9rem; color:var(--text-muted);">يمتلك كافة الصلاحيات الميدانية والإدارية المباشرة ويُرجع إليه بعد المسؤول والنائب وفي غيابهما.</p>
                 </div>
                 <div class="card">
                     <h4>المرجع الثالث</h4>
                     <p style="color:var(--accent-green); font-weight:bold; margin:5px 0;">✯ | نائب مسؤول أمن الطرق</p>
-                    <p style="font-size:0.9rem; color:var(--text-muted);">الداعم الأول والمباشر للمسؤول، ويقوم بتنسيق مهام تأمين الطرق، ومتابعة قضايا التهريب والالتزام الميداني.</p>
+                    <p style="font-size:0.9rem; color:var(--text-muted);">المتابع الأول لسير الكمائن ومباشرة الطرق والمهربين والتأكد من تطبيق العقوبات بالتنسيق مع القائد.</p>
                 </div>
                 <div class="card">
                     <h4>المرجع الرابع</h4>
                     <p style="color:var(--accent-green); font-weight:bold; margin:5px 0;">✯ | مسؤول أمن الطرق</p>
-                    <p style="font-size:0.9rem; color:var(--text-muted);">المرجع النهائي للقطاع، وضعت رتبته بالمرتبة الأخيرة لضمان عدم إشغاله بالرسائل إلا في القضايا المهمة جداً.</p>
+                    <p style="font-size:0.9rem; color:var(--text-muted);">المرجع النهائي والأخير للقطاع، وضع في نهاية السلسلة للحد من الإزعاج ويتم التواصل معه في الحالات الطارئة فقط.</p>
                 </div>
-            </div>
-            <div class="card" style="background-color:#1c1212; border-color:#c0392b; margin-top:25px;">
-                <p style="color:#e74c3c; font-weight:bold;"><i class="fas fa-exclamation-triangle"></i> تنبيه: يُمنع تجاوز التسلسل الإداري أو التجاهل أثناء العمل الميداني على الطرق السريعة.</p>
             </div>
         </section>
 
-        <!-- القسم الإداري المحمي -->
-        <section id="admin-zone">
-            <h2 class="section-title"><i class="fas fa-lock"></i> نظام المستندات وقوانين الإدارة السرّية</h2>
-            
-            <div class="admin-lock-zone" id="lock-screen">
-                <i class="fas fa-user-shield" style="font-size: 3rem; color: #d35400;"></i>
-                <h3 style="margin-top:10px;">هذا القسم مخصص لإدارة أمن الطرق فقط</h3>
-                <p style="color:var(--text-muted); font-size:0.9rem;">الرجاء إدخال رمز التحقق الخاص بالإدارة لمشاهدة المستندات والخطط السرية.</p>
-                <input type="password" id="admin-password" class="input-code" placeholder="••••••">
-                <br>
-                <button class="btn-unlock" onclick="checkCode()">تحقق وفك القفل</button>
-            </div>
-
-            <div class="secret-content" id="allowed-content">
-                <div class="grid-container">
-                    <div class="card">
-                        <h3 style="color:#e67e22; margin-bottom:15px;"><i class="fas fa-folder-open"></i> القسم الخامس: مستندات وروابط إدارية</h3>
-                        <a href="https://docs.google.com/spreadsheets/d/12Tcl7uMLmljnIspA9I2xjWlT1x4IdfEscI3IuHuGMaU/edit?usp=drivesdk" target="_blank" class="link-button" style="background-color:#d35400;">
-                            <span>لائحة إدارة القوات الخاصة لأمن الطرق</span> <i class="fas fa-file-excel"></i>
-                        </a>
+        <!-- القسم الخامس الجديد: إنجازات القطاع -->
+        <section id="achievements">
+            <h2 class="section-title"><i class="fas fa-trophy"></i> إنجازات القوات الخاصة لأمن الطرق</h2>
+            <div class="grid-container">
+                <div class="card" style="grid-column: 1 / -1;">
+                    <div class="achievement-item">
+                        <div class="achievement-icon"><i class="fas fa-shield"></i></div>
+                        <div>
+                            <h4 style="color: #ffffff; margin-bottom: 5px;">تأمين السيطرة الكاملة على طريق الملك فهد</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">تأمين وحماية الشريان الرئيسي لمدينة KR بنسبة انضباطية عالية وفرض هيبة القانون المروري والأمني على مدار الساعة.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="achievement-item">
+                        <div class="achievement-icon"><i class="fas fa-handcuffs"></i></div>
+                        <div>
+                            <h4 style="color: #ffffff; margin-bottom: 5px;">إحباط وضبط أكبر عمليات التهريب</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">الاشتباك مع مجموعات المهربين بحزم وإحباط إدخال المواد والمركبات غير النظامية للمدينة عبر الخطوط السريعة بكل كفاءة.</p>
+                        </div>
                     </div>
 
-                    <div class="card" style="grid-column: span 2;">
-                        <h3 style="color:#e67e22; margin-bottom:15px;"><i class="fas fa-user-gavel"></i> القسم السادس: قوانين إدارة القوات الخاصة لأمن الطرق</h3>
-                        <ul class="list-numbered" style="--primary-green: #d35400;">
-                            <li>يجب احترام جميع الأفراد والضباط داخل القطاع والميدان.</li>
-                            <li>يُمنع منعاً باتاً قبول إجازة الفرد في حال انتهاء رصيد إجازاته الوظيفية.</li>
-                            <li>يُمنع استخدام صلاحيات أمن الطرق والقبض والتفتيش بشكل خاطئ أو تعسفي.</li>
-                            <li>يجب التركيز على الإثباتات والصور في حال قبول المخالفات أو محاضر ضبط المهربين.</li>
-                            <li>يُمنع منعاً باتاً الجدالات داخل إدارة القطاع، وعند حدوث مشكلة يتم الرفع للمسؤول ونائبه.</li>
-                            <li>في حال كان لديك (🔴 إيقاف عسكري) أو (⚫ إعادة تأهيل) أو (✈️ إجازة وظيفية) يُمنع حضور المباشرات الميدانية أو الاجتماعات مع مجلس الوزراء.</li>
-                            <li>يجب الإشراف التام على توزيع الدوريات عند نقاط التفتيش ومباشرة الحوادث على الطرق السريعة وتنبيه المخالفين.</li>
-                            <li>يُمنع إنشاء اجتماعات طارئة إلا بإذن مسبق من مسؤول القطاع أو نائبه.</li>
-                            <li>يجب عليك الالتزام التام بجدول العقوبات والهيكل الإداري لقطاع أمن الطرق.</li>
-                            <li>يُمنع رفض التقارير أو قضايا المهربين بناءً على الحقد الشخصي، والمخالف يعفى مباشرة.</li>
-                            <li>يُمنع قبول عمل أو مكافأة لشخص غير مستحق، وسيتم محاسبة الإداري الفاعل فوراً.</li>
-                            <li>التفاعل الميداني هذا الأسبوع إلزامي، والتغيب لأسبوع دون عذر يعرضك للتنبيه، ولأسبوعين للإعفاء.</li>
-                            <li>عند رفض أي محضر ضبط في سجل أمن الطرق دون ذكر السبب في الشات الرسمي سيتم محاسبة الإداري.</li>
-                            <li>يجب الاستماع التام لأوامر قيادة القطاع العسكرية وعدم مخالفتها.</li>
-                            <li>يُمنع استحداث أي قانون ميداني أو نظام للتفتيش دون إذن قيادة القطاع.</li>
-                            <li>يُمنع التعديل على الهيكل الإداري أو لوائح المخالفات المرورية والأمنية دون إذن المسؤول ونائبه.</li>
-                            <li>يُمنع إضافة رتب أو رادارات أو أنظمة طرق داخل مدينة KR دون إذن رسمي من المسؤول.</li>
-                            <li>يجب إرسال التقارير الأسبوعية الخاصة بضبط الطرق والمهربين للمسؤول ومساعده دون تأخير.</li>
-                            <li>أقصى حد لقبول إجازات الأفراد 7 أيام، وللمسؤول ونائبه حصراً صلاحية قبولها حتى 14 يوماً.</li>
-                            <li>في حال إجراء أي تصويت داخل القطاع، يجب أخذ الإذن المسبق من المسؤول ونائبه.</li>
-                            <li>يرجى عدم إزعاج أو منشن قيادة القطاع (المسؤول والنائب)، والتكرار يؤدي للمحاسبة.</li>
-                            <li>يُمنع منعاً باتاً تعديل لائحة أمن الطرق الرئيسية إلا بإذن صريح من المسؤول.</li>
-                        </ul>
+                    <div class="achievement-item">
+                        <div class="achievement-icon"><i class="fas fa-bolt"></i></div>
+                        <div>
+                            <h4 style="color: #ffffff; margin-bottom: 5px;">سرعة الاستجابة للبلاغات والتعافي</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">تسجيل زمن قياسي في سرعة الانتقال ومباشرة الحوادث والتعامل المباشر الحازم مع الحالات الجنائية والأمنية الطارئة على الطرق الحيوية.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
     </div>
 
     <script>
-        function enterSite() {
-            const welcomeScreen = document.getElementById('welcome-screen');
-            const mainSite = document.getElementById('main-site');
+        // التغيير للشاشة الثانية (شاشة الترحيب والتعريف المطور)
+        function showPlatformIntro() {
+            const screen1 = document.getElementById('welcome-screen');
+            const screen2 = document.getElementById('intro-screen');
             
-            welcomeScreen.style.opacity = '0';
-            welcomeScreen.style.pointerEvents = 'none';
+            screen1.style.opacity = '0';
+            screen1.style.pointerEvents = 'none';
             
             setTimeout(() => {
-                welcomeScreen.style.display = 'none';
+                screen1.style.display = 'none';
+                screen2.style.display = 'flex';
+                setTimeout(() => {
+                    screen2.style.opacity = '1';
+                }, 50);
+            }, 600);
+        }
+
+        // الدخول الفعلي للموقع بعد قراءة الترحيب
+        function enterMainSite() {
+            const screen2 = document.getElementById('intro-screen');
+            const mainSite = document.getElementById('main-site');
+            const tickerTop = document.getElementById('ticker-top');
+            
+            screen2.style.opacity = '0';
+            screen2.style.pointerEvents = 'none';
+            
+            setTimeout(() => {
+                screen2.style.display = 'none';
+                tickerTop.style.display = 'flex';
                 mainSite.style.display = 'block';
                 
                 setTimeout(() => {
                     mainSite.style.opacity = '1';
                 }, 50);
+                
+                // بدء تشغيل الساعة فورا
+                startLiveClock();
             }, 600);
         }
 
-        function checkCode() {
-            const codeInput = document.getElementById('admin-password').value;
-            const lockScreen = document.getElementById('lock-screen');
-            const allowedContent = document.getElementById('allowed-content');
-            const correctCode = "292107";
-
-            if (codeInput === correctCode) {
-                alert("تم التحقق بنجاح، مرحباً بك في إدارة أمن الطرق.");
-                lockScreen.style.display = 'none';
-                allowedContent.style.display = 'block';
-            } else {
-                alert("الرمز السري خاطئ! يرجى التأكد والمحاولة مرة أخرى.");
-                document.getElementById('admin-password').value = "";
-            }
+        // سكربت التوقيت الحي المتطور (12 ساعة، ميلادي وهجري)
+        function startLiveClock() {
+            setInterval(() => {
+                const now = new Date();
+                
+                // 1. نظام الساعة 12
+                let hours = now.getHours();
+                let minutes = now.getMinutes();
+                let seconds = now.getSeconds();
+                let ampm = hours >= 12 ? 'مساءً' : 'صباحاً';
+                
+                hours = hours % 12;
+                hours = hours ? hours : 12; // الساعة 0 تحول إلى 12
+                minutes = minutes < 10 ? '0' + minutes : minutes;
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+                
+                document.getElementById('clock-display').innerText = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+                
+                // 2. التاريخ الميلادي
+                let day = now.getDate();
+                let month = now.getMonth() + 1; // الأشهر تبدأ من 0
+                let year = now.getFullYear();
+                document.getElementById('gregorian-display').innerText = day + ' / ' + month + ' / ' + year;
+                
+                // 3. حساب التاريخ الهجري التقريبي برمجياً
+                let hijriDate = new Intl.DateTimeFormat('ar-FR-u-ca-islamic', {
+                    day: 'numeric',
+                    month: 'numeric',
+                    year: 'numeric'
+                }).format(now);
+                
+                document.getElementById('hijri-display').innerText = hijriDate;
+            }, 1000);
         }
     </script>
 </body>
